@@ -19,6 +19,10 @@ def run_game():
         ship.update()
         gf.check_events(ai_settings, screen, ship, bullets)
         bullets.update()
+        for bullet in bullets.copy():
+             if bullet.rect.bottom <= 0:
+                  bullets.remove(bullet)
+        print(len(bullets))
         gf.update_screen(ai_settings, screen, ship, bullets)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
